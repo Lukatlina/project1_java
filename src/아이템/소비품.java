@@ -18,32 +18,17 @@ public class 소비품 extends 아이템{
             return 보컬;
         }
 
-        public void set보컬(int 보컬) {
-            this.보컬 = 보컬;
-        }
-
         public int get랩() {
             return 랩;
-        }
-
-        public void set랩(int 랩) {
-            this.랩 = 랩;
         }
 
         public int get체력(){
             return 체력;
         }
 
-        public void set체력(int 체력) {
-            this.체력 = 체력;
-        }
-
         public int get매력(){
             return 매력;
         }
 
-        public void set매력(int 매력) {
-            this.매력 = 매력;
-        }
     }
 

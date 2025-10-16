@@ -3,7 +3,6 @@ package 아이템;
 public class 음식물 extends 소비품 {
 
     // 소비품 아래에 캔디나 다른 클래스 만들기 -> 일관성이 없음, 장비도 소비품처럼 했다면 문제는 안됐을 것
-    //
 
     // 생성자 여러개 만들기
     // 생성자 오버로딩
@@ -14,4 +13,5 @@ public class 음식물 extends 소비품 {
     public 음식물(String 물품명, int 가격, int 체력, int 보컬, int 랩, int 매력) {
         super(물품명, 가격, 체력, 보컬, 랩, 매력);
     }
+
 }

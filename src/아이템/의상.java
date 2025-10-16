@@ -1,7 +1,7 @@
 package 아이템;
 
 public class 의상 extends 장비 {
-    private int 매력;
+    private final int 매력;
     // 생성자
 
     public 의상(String 물품명, int 가격, int 매력) {
@@ -13,7 +13,4 @@ public class 의상 extends 장비 {
         return 매력;
     }
 
-    public void set매력(int 매력) {
-        this.매력 = 매력;
-    }
 }

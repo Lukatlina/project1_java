@@ -99,7 +99,20 @@ public abstract class 연습생 {
     }
 
     public void set체력(int 체력) {
-        this.체력 = 체력;
+        if (체력 <= 0) {
+            // 체력이 0보다 작으면 0으로 설정
+            this.체력 = 0;
+            System.out.println("체력이 고갈되어 더 이상 진행할 수 없습니다. 자진하차를 선택했습니다.");
+            // 프로그램 종료
+            System.exit(0);
+
+        } else if (체력 > 100) {
+            // 체력이 100보다 클 수 없도록 이상이여도 100으로 설정
+            this.체력 = 100;
+
+        } else {
+            this.체력 = 체력;
+        }
     }
 
     public void add체력(int 체력) {
@@ -111,7 +124,17 @@ public abstract class 연습생 {
     }
 
     public void add보컬(int 보컬) {
-        this.보컬 += 보컬;
+        int new보컬 = this.보컬 + 보컬;
+
+        if (new보컬 < 0) {
+            this.보컬 = 0;
+
+        } else if (new보컬 > 100) {
+            this.보컬 = 100;
+
+        } else {
+            this.보컬 = new보컬;
+        }
     }
 
     public int get랩() {
@@ -119,7 +142,17 @@ public abstract class 연습생 {
     }
 
     public void add랩(int 랩) {
-        this.랩 += 랩;
+        int new랩 = this.랩 + 랩;
+
+        if (new랩 < 0) {
+            this.랩 = 0;
+
+        } else if (new랩 > 100) {
+            this.랩 = 100;
+
+        } else {
+            this.랩 = new랩;
+        }
     }
 
     public int get매력() {
@@ -127,11 +160,27 @@ public abstract class 연습생 {
     }
 
     public void set매력(int 매력) {
-        this.매력 = 매력;
+        if (매력 < 0) {
+            this.매력 = 0;
+        } else if (매력 > 100) {
+            this.매력 = 100;
+        } else {
+            this.매력 = 매력;
+        }
     }
 
     public void add매력(int 매력) {
-        this.매력 += 매력;
+        int new매력 = this.매력 + 매력;
+
+        if (new매력 < 0) {
+            this.매력 = 0;
+
+        } else if (new매력 > 100) {
+            this.매력 = 100;
+
+        } else {
+            this.매력 = new매력;
+        }
     }
 
     public int get댄스() {
@@ -139,11 +188,27 @@ public abstract class 연습생 {
     }
 
     public void set댄스(int 댄스) {
-        this.댄스 = 댄스;
+        if (댄스 < 0) {
+            this.댄스 = 0;
+        } else if (댄스 > 100) {
+            this.댄스 = 100;
+        } else {
+            this.댄스 = 댄스;
+        }
     }
 
     public void add댄스(int 댄스) {
-        this.댄스 += 댄스;
+        int new댄스 = this.댄스 + 댄스;
+
+        if (new댄스 < 0) {
+            this.댄스 = 0;
+
+        } else if (new댄스 > 100) {
+            this.댄스 = 100;
+
+        } else {
+            this.댄스 = new댄스;
+        }
     }
 
     public String get등급() {
@@ -155,7 +220,11 @@ public abstract class 연습생 {
     }
 
     public void set득표수(int 득표수) {
-        this.득표수 = 득표수;
+        if (득표수 < 0) {
+            this.득표수 = 0;
+        } else {
+            this.득표수 = 득표수;
+        }
     }
 
     private void 눈물흘리기() {
@@ -197,6 +266,13 @@ public abstract class 연습생 {
     }
     
     private void add득표수(int 득표수) {
-        this.득표수 += 득표수;
+        int new득표수 = this.득표수 + 득표수;
+
+        if (new득표수 < 0) {
+            this.득표수 = 0;
+
+        } else {
+            this.득표수 = new득표수;
+        }
     }
 }

@@ -1,12 +1,12 @@
-package 특수행동;
+package 활동;
 
 import 캐릭터.개인연습생;
 import java.util.Scanner;
 
 public class 자유행동 {
     private final int 지출금; // 네이밍 고민해보기
-    private int 체력;
-    private int 매력;
+    private final int 체력;
+    private final int 매력;
 
     public 자유행동(int 지출금, int 체력, int 매력) {
         this.지출금 = 지출금;

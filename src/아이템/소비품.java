@@ -1,10 +1,10 @@
 package 아이템;
 
 public class 소비품 extends 아이템{
-    private int 보컬;
-    private int 랩;
-    private int 체력;
-    private int 매력;
+    private final int 보컬;
+    private final int 랩;
+    private final int 체력;
+    private final int 매력;
 
     public 소비품(String 물품명, int 가격, int 체력, int 보컬, int 랩, int 매력) {
         super(물품명, 가격);

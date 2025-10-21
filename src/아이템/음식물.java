@@ -13,5 +13,4 @@ public class 음식물 extends 소비품 {
     public 음식물(String 물품명, int 가격, int 체력, int 보컬, int 랩, int 매력) {
         super(물품명, 가격, 체력, 보컬, 랩, 매력);
     }
-
 }

@@ -1,11 +1,11 @@
-package 특수행동.아르바이트;
+package 활동.아르바이트;
 
 import 캐릭터.개인연습생;
 import java.util.Random;
 
 public class 프로모터아르바이트 extends 아르바이트{
 
-    private int 매력;
+    private final int 매력;
 
     public 프로모터아르바이트(int 체력, int 일당, int 매력) {
         super(체력, 일당);

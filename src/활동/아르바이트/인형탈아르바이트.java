@@ -1,4 +1,4 @@
-package 특수행동.아르바이트;
+package 활동.아르바이트;
 
 import 캐릭터.개인연습생;
 

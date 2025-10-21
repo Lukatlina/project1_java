@@ -27,28 +27,49 @@ public class 의상실 {
         System.out.println("-----------------------------------------------");
     }
 
-    public void 장착아이템구매하기(int value, 개인연습생 플레이어) {
+    public void 장비아이템구매하기(int value, 개인연습생 플레이어) {
 
         if (value == 1) {
             장비아이템사기(플레이어, 트레이닝복);
         } else if (value == 2) {
             장비아이템사기(플레이어, 테크웨어);
-//            옷사기(플레이어, 테크웨어, 플레이어.get옷장());
         } else if (value == 3) {
             장비아이템사기(플레이어, 수트);
-//            옷사기(플레이어, 수트, 플레이어.get옷장());
         } else if (value == 4) {
             장비아이템사기(플레이어, 운동화);
-//            신발사기(플레이어, 운동화, 플레이어.get신발장());
         } else if (value == 5) {
-//            신발사기(플레이어, 부츠, 플레이어.get신발장());
             장비아이템사기(플레이어, 부츠);
         } else if (value == 6) {
-//            신발사기(플레이어, 구두, 플레이어.get신발장());
             장비아이템사기(플레이어, 구두);
         }else{
             System.out.println("번호에 해당하는 아이템이 없습니다.");
         }
+    }
+
+    public void 의상판매(int value, 개인연습생 플레이어) {
+        if (플레이어.get옷장().size() <= value || value < 0) {
+            System.out.println("보유 아이템이 없습니다.");
+            return;
+        }
+
+        final 의상 의상 = 플레이어.get옷장().get(value);
+        플레이어.add소지금(의상.get가격());
+        System.out.println(의상.get물품명() + " 판매가 완료되었습니다.");
+        플레이어.get옷장().remove(value);
+        System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
+    }
+
+    public void 신발판매(int value, 개인연습생 플레이어) {
+        if (플레이어.get신발장().size() <= value || value < 0) {
+            System.out.println("보유 아이템이 없습니다.");
+            return;
+        }
+
+        final 신발 신발 = 플레이어.get신발장().get(value);
+        플레이어.add소지금(신발.get가격());
+        System.out.println(신발.get물품명() + " 판매가 완료되었습니다.");
+        플레이어.get신발장().remove(value);
+        System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
     }
 
     private void 장비아이템사기(개인연습생 플레이어, 장비 장비) {
@@ -78,63 +99,6 @@ public class 의상실 {
             System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
             플레이어.신발보여주기();
         }
-    }
-
-    // 리스트 안에 물건이 없다면 접근 못하게 막기 -> 리스트에 값이 없으면 null값, get value가 안되서 오류가 생기는 것. 예외처리?
-    // -> 방법이 두가지가 있음. 첫번째는 크게 이 조건문을 감싸는 조건문을 만들어서 리스트에 값이 있는지 확인하기, 리스트에 값이 하나라도 있는지 확인하기
-    // contains : 리스트 안에 어떤 객체가 있는지 확인해서 true나 false를 반환하는 메소드
-    // get(index) : 해당 인덱스의 값을 반환하는 메소드
-//    public void 의상판매(int value, 개인연습생 플레이어) {
-//        if (플레이어.get옷장().contains(플레이어.get옷장().get(value)) == true) {
-//            if (value <= 플레이어.get옷장().size()){
-//                플레이어.add소지금(플레이어.get옷장().get(value).get가격());
-//                System.out.println(플레이어.get옷장().get(value).get물품명() + " 판매가 완료되었습니다.");
-//                플레이어.get옷장().remove(value);
-//                System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
-//            }else{
-//                System.out.println("보유 아이템이 없습니다.");
-//            }
-//
-//        } else {
-//            System.out.println("보유 아이템이 없습니다.");
-//        }
-//    }
-//
-//    public void 신발판매(int value, 개인연습생 플레이어) {
-//        if (플레이어.get신발장().contains(플레이어.get신발장().get(value)) == true) {
-//            플레이어.add소지금(플레이어.get신발장().get(value).get가격());
-//            System.out.println(플레이어.get신발장().get(value).get물품명() + " 판매가 완료되었습니다.");
-//            플레이어.get신발장().remove(value);
-//            System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
-//        } else {
-//            System.out.println("보유 아이템이 없습니다.");
-//        }
-//    }
-
-    public void 의상판매(int value, 개인연습생 플레이어) {
-        if (플레이어.get옷장().size() <= value || value < 0) {
-            System.out.println("보유 아이템이 없습니다.");
-            return;
-        }
-
-        final 의상 의상 = 플레이어.get옷장().get(value);
-        플레이어.add소지금(의상.get가격());
-        System.out.println(의상.get물품명() + " 판매가 완료되었습니다.");
-        플레이어.get옷장().remove(value);
-        System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
-    }
-
-    public void 신발판매(int value, 개인연습생 플레이어) {
-        if (플레이어.get신발장().size() <= value || value < 0) {
-            System.out.println("보유 아이템이 없습니다.");
-            return;
-        }
-
-        final 신발 신발 = 플레이어.get신발장().get(value);
-        플레이어.add소지금(신발.get가격());
-        System.out.println(신발.get물품명() + " 판매가 완료되었습니다.");
-        플레이어.get신발장().remove(value);
-        System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
     }
 
 

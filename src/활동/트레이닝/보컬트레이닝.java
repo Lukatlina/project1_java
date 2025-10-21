@@ -1,4 +1,4 @@
-package 특수행동.트레이닝;
+package 활동.트레이닝;
 
 import 캐릭터.개인연습생;
 import java.util.Random;

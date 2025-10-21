@@ -47,8 +47,9 @@ public class Main {
 
             // . == at, reference 참조하다의 의미, 지역변수 이름.필드/메서드 형식으로 사용
             // 참조 연산자(.) : 지역 변수가 저장하고 있는 메모리 주소를 찾아간다(참조한다)는 의미
-            System.out.println("이름을 입력해주세요.");
-            final String 이름 = sc.next();
+            sc.nextLine();
+            System.out.print("이름을 입력해주세요: ");
+            final String 이름 = sc.nextLine();
             final 의상실 의상실 = new 의상실();
             final 상점 상점 = new 상점();
             final 스테이지 스테이지 = new 스테이지();
@@ -189,7 +190,7 @@ public class Main {
                             의상실.의상실아이템보기();
                             System.out.println("구매하실 아이템의 번호를 입력해주세요.");
                             value = sc.nextInt();
-                            의상실.장착아이템구매하기(value, player);
+                            의상실.장비아이템구매하기(value, player);
 
 
                         } else if (value == 2) {

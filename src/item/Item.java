@@ -1,7 +1,5 @@
 package item;
 
-// 장비, 소비 아이템으로 나눌 것 -> 로직 합쳐서 관리하기 어려워짐
-// 아이템 조작시 음식물까지 코드에 영향을 줄 수도 있음 -> 적절한 분리 필요
 public abstract class Item {
     private final String itemName;
     private final int price;

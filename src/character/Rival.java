@@ -7,16 +7,16 @@ public class Rival extends Trainee {
         super(Name, vocal, rap, charm, dance, grade, voteCount);
     }
 
-    public void 능력치보여주기() {
+    public void showStats() {
         System.out.println("--------------------------");
-        System.out.println("        Name : " + getName());
-        System.out.println("        health : " + getHealth());
-        System.out.println("        vocal : " + getVocal());
-        System.out.println("        rap : " + getRap());
-        System.out.println("        dance : " + getDance());
-        System.out.println("        charm : " + getCharm());
-        System.out.println("        grade : " + getGrade());
-        System.out.println("        voteCount : " + getVoteCount());
+        System.out.println("        이름 : " + getName());
+        System.out.println("        체력 : " + getHealth());
+        System.out.println("        보컬 : " + getVocal());
+        System.out.println("        랩 : " + getRap());
+        System.out.println("        댄스 : " + getDance());
+        System.out.println("        매력 : " + getCharm());
+        System.out.println("        등급 : " + getGrade());
+        System.out.println("        득표수 : " + getVoteCount());
         System.out.println("--------------------------");
     }
 }

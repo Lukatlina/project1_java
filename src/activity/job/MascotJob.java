@@ -8,33 +8,33 @@ public class MascotJob extends Job {
 
     private final int dance;
 
-    public MascotJob(int health, int 일당, int dance) {
-        super(health, 일당);
+    public MascotJob(int health, int wage, int dance) {
+        super(health, wage);
         this.dance = dance;
     }
 
     //
     @Override
-    public void 능력치습득(IndividualTrainee 플레이어){
+    public void acquireStats(IndividualTrainee player){
         Random random = new Random();
-        int random값 = random.nextInt(3);
-        if (random값 == 0){
-            플레이어.addMoney(get일당()+7000);
-            플레이어.addDance(dance+4);
-            플레이어.setHealth(플레이어.getHealth() - (getHealth()+5));
-            System.out.println("일당 : " + (get일당() +7000) + "/ health : -" + (getHealth()+5) + "/ dance : " + (dance+4));
+        int outcome = random.nextInt(3);
+        if (outcome == 0){
+            player.addMoney(getWage()+7000);
+            player.addDance(dance+4);
+            player.setHealth(player.getHealth() - (getHealth()+5));
+            System.out.println("일당 : " + (getWage() +7000) + "/ 체력 : -" + (getHealth()+5) + "/ 댄스 : " + (dance+4));
             System.out.println("집중해서 아르바이트를 끝냈습니다. 일을 너무 잘해서 보너스를 더 받았습니다.");
-        } else if (random값 == 1) {
-            플레이어.addMoney(get일당()+2000);
-            플레이어.addDance(dance+2);
-            플레이어.setHealth(플레이어.getHealth() - (getHealth()+2));
-            System.out.println("일당 : " + (get일당() +2000) + "/ health : -" + (getHealth()+2) + "/ dance : " + (dance+2));
+        } else if (outcome == 1) {
+            player.addMoney(getWage()+2000);
+            player.addDance(dance+2);
+            player.setHealth(player.getHealth() - (getHealth()+2));
+            System.out.println("일당 : " + (getWage() +2000) + "/ 체력 : -" + (getHealth()+2) + "/ 댄스 : " + (dance+2));
             System.out.println("평범하게 아르바이트를 끝냈습니다.");
         }else{
-            플레이어.addMoney(get일당());
-            플레이어.addDance(dance);
-            플레이어.setHealth(플레이어.getHealth() - getHealth());
-            System.out.println("일당 : " + get일당() + "/ health : -" + getHealth() + "/ dance : " + dance);
+            player.addMoney(getWage());
+            player.addDance(dance);
+            player.setHealth(player.getHealth() - getHealth());
+            System.out.println("일당 : " + getWage() + "/ 체력 : -" + getHealth() + "/ 댄스 : " + dance);
             System.out.println("실수를 많이 했습니다. 실수로 인한 피해로 일당이 깎였습니다.");
         }
     }

@@ -5,39 +5,39 @@ import character.IndividualTrainee;
 import java.util.Random;
 
 public class CafeJob extends Job {
-    private final int 폐활량;
-    private final int 화술;
+    private final int lungCapacity;
+    private final int speechSkill;
 
-    public CafeJob(int health, int 일당, int 폐활량, int 화술) {
-        super(health, 일당);
-        this.폐활량 = 폐활량;
-        this.화술 = 화술;
+    public CafeJob(int health, int wage, int lungCapacity, int speechSkill) {
+        super(health, wage);
+        this.lungCapacity = lungCapacity;
+        this.speechSkill = speechSkill;
     }
 
     @Override
-    public void 능력치습득(IndividualTrainee 플레이어){
+    public void acquireStats(IndividualTrainee player){
         Random random = new Random();
-        int random값 = random.nextInt(3);
-        if (random값 == 0){
-            플레이어.addMoney(get일당()+7000);
-            플레이어.addVocal(폐활량+4);
-            플레이어.addRap(화술+4);
-            플레이어.setHealth(플레이어.getHealth() - (getHealth()+5));
-            System.out.println("일당 : " + (get일당()+7000) + "/ health : -" + (getHealth()+5) + "/ vocal : " + (폐활량+4) + "/ rap : " + (화술+4));
+        int outcome = random.nextInt(3);
+        if (outcome == 0){
+            player.addMoney(getWage()+7000);
+            player.addVocal(lungCapacity+4);
+            player.addRap(speechSkill+4);
+            player.setHealth(player.getHealth() - (getHealth()+5));
+            System.out.println("일당 : " + (getWage()+7000) + "/ 체력 : -" + (getHealth()+5) + "/ 보컬 : " + (lungCapacity+4) + "/ 랩 : " + (speechSkill+4));
             System.out.println("집중해서 아르바이트를 끝냈습니다. 일을 너무 잘해서 보너스를 더 받았습니다.");
-        }else if (random값 == 1) {
-            플레이어.addMoney(get일당()+2000);
-            플레이어.addVocal(폐활량+2);
-            플레이어.addRap(화술+2);
-            플레이어.setHealth(플레이어.getHealth() - getHealth()+2);
-            System.out.println("일당 : " + (get일당()+2000) + "/ health : -" + (getHealth()+2) + "/ vocal : " + (폐활량+2) + "/ rap : " + (화술+2));
+        }else if (outcome == 1) {
+            player.addMoney(getWage()+2000);
+            player.addVocal(lungCapacity+2);
+            player.addRap(speechSkill+2);
+            player.setHealth(player.getHealth() - getHealth()+2);
+            System.out.println("일당 : " + (getWage()+2000) + "/ 체력 : -" + (getHealth()+2) + "/ 보컬 : " + (lungCapacity+2) + "/ 랩 : " + (speechSkill+2));
             System.out.println("평범하게 아르바이트를 끝냈습니다.");
         }else{
-            플레이어.addMoney(get일당());
-            플레이어.addVocal(폐활량);
-            플레이어.addRap(화술);
-            플레이어.setHealth(플레이어.getHealth() - getHealth());
-            System.out.println("일당 : " + get일당() + "/ health : -" + getHealth() + "/ vocal : " + 폐활량 + "/ rap : " + 화술);
+            player.addMoney(getWage());
+            player.addVocal(lungCapacity);
+            player.addRap(speechSkill);
+            player.setHealth(player.getHealth() - getHealth());
+            System.out.println("일당 : " + getWage() + "/ 체력 : -" + getHealth() + "/ 보컬 : " + lungCapacity + "/ 랩 : " + speechSkill);
             System.out.println("실수를 많이 했습니다. 실수로 인한 피해로 일당이 깎였습니다.");
         }
     }

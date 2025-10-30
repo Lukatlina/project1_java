@@ -10,7 +10,7 @@ public abstract class Training {
     }
 
     // 추상메소드
-    public abstract void 능력치습득(IndividualTrainee 플레이어);
+    public abstract void acquireStats(IndividualTrainee player);
 
     protected int getHealth() {
         return health;

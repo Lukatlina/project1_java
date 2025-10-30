@@ -6,11 +6,11 @@ public class 음식물 extends 소비품 {
 
     // 생성자 여러개 만들기
     // 생성자 오버로딩
-    // 보통은 물품명이 앞으로 가면 다 앞으로 감. 다형성 이용시 인자값 순서 일치하게 만듬. 갯수 차이가 있음 -> 일치시키기
+    // 보통은 itemName이 앞으로 가면 다 앞으로 감. 다형성 이용시 인자값 순서 일치하게 만듬. 갯수 차이가 있음 -> 일치시키기
     // 변수명도 각 클래스에 맞춰서 선언
 
     // 목캔디 생성자
-    public 음식물(String 물품명, int 가격, int 체력, int 보컬, int 랩, int 매력) {
-        super(물품명, 가격, 체력, 보컬, 랩, 매력);
+    public 음식물(String itemName, int price, int health, int vocal, int rap, int charm) {
+        super(itemName, price, health, vocal, rap, charm);
     }
 }

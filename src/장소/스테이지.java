@@ -11,9 +11,9 @@ import 캐릭터.*;
 
 public class 스테이지 {
 
-    private final 트레이닝 보컬트레이닝 = new 보컬트레이닝(1, 3);
-    private final 트레이닝 랩트레이닝 = new 랩트레이닝(1, 3);
-    private final 트레이닝 댄스트레이닝 = new 댄스트레이닝(1, 3);
+    private final 트레이닝 vocal트레이닝 = new vocal트레이닝(1, 3);
+    private final 트레이닝 rap트레이닝 = new rap트레이닝(1, 3);
+    private final 트레이닝 dance트레이닝 = new dance트레이닝(1, 3);
     private final 트레이닝 표정연구하기 = new 표정연구하기(1, 3);
 
     private final 아르바이트 카페아르바이트 = new 카페아르바이트(5, 28000, 1, 1);
@@ -23,7 +23,7 @@ public class 스테이지 {
     private final 자유행동 자유행동 = new 자유행동(30000, 10, 5);
 
     private final Scanner sc = new Scanner(System.in);
-    private final Random 랜덤 = new Random();
+    private final Random random = new Random();
 
 
     public void 일주일루틴(개인연습생 플레이어) {
@@ -36,43 +36,43 @@ public class 스테이지 {
         플레이어.능력치보여주기();
     }
 
-    public void 일요일반복(개인연습생 플레이어, 라이벌 라이벌, int 달성득표수) {
+    public void 일요일반복(개인연습생 플레이어, 라이벌 라이벌, int 달성voteCount) {
 
         라이벌.능력치보여주기();
 
         System.out.println("무대를 해야 할 시간입니다. 과연 최후까지 살아남을 수 있을까요?");
         System.out.println("국민 프로듀서분들께 어필할 행동을 선택해주세요.");
 
-        플레이어.set득표수(0);
+        플레이어.setVoteCount(0);
         boolean 공연 = true;
         while (공연) {
             System.out.println("1. 공연하기 2. 개인기 선보이기");
             int value = sc.nextInt();
             if (value == 1) {
                 플레이어.공연하기(); // 매개변수 이용 잘 못하고 있음. 매개변수 메서드를 이용해서 할 수 있다.
-                System.out.println("현재 " + 플레이어.get이름() + "의 득표수는 " + 플레이어.get득표수() + "입니다.");
+                System.out.println("현재 " + 플레이어.getName() + "의 voteCount는 " + 플레이어.getVoteCount() + "입니다.");
                 라이벌.공연하기();
-                System.out.println("현재 " + 라이벌.get이름() + "의 득표수는 " + 라이벌.get득표수() + "입니다.");
+                System.out.println("현재 " + 라이벌.getName() + "의 voteCount는 " + 라이벌.getVoteCount() + "입니다.");
 
-                if (플레이어.get득표수() >= 달성득표수 && 라이벌.get득표수() < 달성득표수) {
-                    플레이어.등급상승();
-                    if (플레이어.get등급().equals("A")) {
-                        System.out.println(플레이어.get이름() + "가 A등급이 되어 아이돌 데뷔에 성공했습니다.");
+                if (플레이어.getVoteCount() >= 달성voteCount && 라이벌.getVoteCount() < 달성voteCount) {
+                    플레이어.grade상승();
+                    if (플레이어.getGrade().equals("A")) {
+                        System.out.println(플레이어.getName() + "가 Agrade이 되어 아이돌 데뷔에 성공했습니다.");
                         System.exit(0);
                     } else {
                         System.out.println("1. 진행하기 2. 상태창 3. 소지물품 4. 의상실 5. 상점 6. 자진하차");
                         break;
                     }
-                } else if (플레이어.get득표수() < 달성득표수 && 라이벌.get득표수() >= 달성득표수) {
-                    System.out.println("아쉽게도 다른 연습생이 먼저 " + 달성득표수 + "표를 달성하여 플레이어가 탈락했습니다.");
+                } else if (플레이어.getVoteCount() < 달성voteCount && 라이벌.getVoteCount() >= 달성voteCount) {
+                    System.out.println("아쉽게도 다른 연습생이 먼저 " + 달성voteCount + "표를 달성하여 플레이어가 탈락했습니다.");
                     System.exit(0);
                     공연 = false;
-                } else if (플레이어.get득표수() >= 달성득표수 && 라이벌.get득표수() >= 달성득표수) {
-                    if (플레이어.get득표수() >= 라이벌.get득표수()) {
-                        플레이어.등급상승();
+                } else if (플레이어.getVoteCount() >= 달성voteCount && 라이벌.getVoteCount() >= 달성voteCount) {
+                    if (플레이어.getVoteCount() >= 라이벌.getVoteCount()) {
+                        플레이어.grade상승();
                         break;
                     } else {
-                        System.out.println("아쉽게도 다른 연습생이 더 많은 득표수를 달성하여 플레이어가 탈락했습니다.");
+                        System.out.println("아쉽게도 다른 연습생이 더 많은 voteCount를 달성하여 플레이어가 탈락했습니다.");
                         System.exit(0);
                     }
                 } else {
@@ -82,27 +82,27 @@ public class 스테이지 {
                 플레이어.자기소개타임();
                 value = sc.nextInt();
                 플레이어.개인기선보이기(value);
-                System.out.println("현재 " + 플레이어.get이름() + "의 득표수는 " + 플레이어.get득표수() + "입니다.");
-                라이벌.개인기선보이기(랜덤.nextInt(4) + 1);
-                System.out.println("현재 " + 라이벌.get이름() + "의 득표수는 " + 라이벌.get득표수() + "입니다.");
-                if (플레이어.get득표수() >= 달성득표수 && 라이벌.get득표수() < 달성득표수) {
-                    플레이어.등급상승();
-                    if (플레이어.get등급().equals("A")) {
-                        System.out.println(플레이어.get이름() + "가 A등급이 되어 아이돌 데뷔에 성공했습니다.");
+                System.out.println("현재 " + 플레이어.getName() + "의 voteCount는 " + 플레이어.getVoteCount() + "입니다.");
+                라이벌.개인기선보이기(random.nextInt(4) + 1);
+                System.out.println("현재 " + 라이벌.getName() + "의 voteCount는 " + 라이벌.getVoteCount() + "입니다.");
+                if (플레이어.getVoteCount() >= 달성voteCount && 라이벌.getVoteCount() < 달성voteCount) {
+                    플레이어.grade상승();
+                    if (플레이어.getGrade().equals("A")) {
+                        System.out.println(플레이어.getName() + "가 Agrade이 되어 아이돌 데뷔에 성공했습니다.");
                         System.exit(0);
                     } else {
                         System.out.println("1. 진행하기 2. 상태창 3. 소지물품 4. 의상실 5. 상점 6. 자진하차");
                         break;
                     }
-                } else if (플레이어.get득표수() < 달성득표수 && 라이벌.get득표수() >= 달성득표수) {
+                } else if (플레이어.getVoteCount() < 달성voteCount && 라이벌.getVoteCount() >= 달성voteCount) {
                     System.out.println("아쉽게도 다른 연습생이 먼저 100,000표를 달성하여 플레이어가 탈락했습니다.");
                     System.exit(0);
-                } else if (플레이어.get득표수() >= 달성득표수 && 라이벌.get득표수() >= 달성득표수) {
-                    if (플레이어.get득표수() >= 라이벌.get득표수()) {
-                        플레이어.등급상승();
+                } else if (플레이어.getVoteCount() >= 달성voteCount && 라이벌.getVoteCount() >= 달성voteCount) {
+                    if (플레이어.getVoteCount() >= 라이벌.getVoteCount()) {
+                        플레이어.grade상승();
                         break;
                     } else {
-                        System.out.println("아쉽게도 다른 연습생이 더 많은 득표수를 달성하여 플레이어가 탈락했습니다.");
+                        System.out.println("아쉽게도 다른 연습생이 더 많은 voteCount를 달성하여 플레이어가 탈락했습니다.");
                         System.exit(0);
                     }
                 } else {
@@ -127,14 +127,14 @@ public class 스테이지 {
     }
 
     private void 트레이닝선택(개인연습생 플레이어) {
-        System.out.println("1. 보컬 2. 랩 3. 댄스 4. 표정연구 5. 뒤로가기");
+        System.out.println("1. vocal 2. rap 3. dance 4. 표정연구 5. 뒤로가기");
         int value = sc.nextInt();
         if (value == 1) {
-            보컬트레이닝.능력치습득(플레이어);
+            vocal트레이닝.능력치습득(플레이어);
         } else if (value == 2) {
-            랩트레이닝.능력치습득(플레이어);
+            rap트레이닝.능력치습득(플레이어);
         } else if (value == 3) {
-            댄스트레이닝.능력치습득(플레이어);
+            dance트레이닝.능력치습득(플레이어);
         } else if (value == 4) {
             표정연구하기.능력치습득(플레이어);
         } else {

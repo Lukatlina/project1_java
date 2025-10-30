@@ -21,22 +21,22 @@ public class 개인연습생 extends 연습생 {
     // 의상 A = new 의상("한복", 400000,30);
     // 의상 B; // 변수 선언, 물리적인 자리만 만드는 것
     // B = new 의상("잠옷", 50000, 10); // 값을 할당
-    public 개인연습생(String 이름, int 보컬, int 랩, int 매력, int 댄스, String 등급, int 득표수, int 소지금) {
-        super(이름, 보컬, 랩, 매력, 댄스, 등급, 득표수);
+    public 개인연습생(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount, int 소지금) {
+        super(Name, vocal, rap, charm, dance, grade, voteCount);
         this.소지금 = 소지금;
     }
 
     public void 능력치보여주기() {
         System.out.println("--------------------------");
-        System.out.println("        이름 : " + get이름());
-        System.out.println("        체력 : " + get체력());
-        System.out.println("        보컬 : " + get보컬());
-        System.out.println("        랩 : " + get랩());
-        System.out.println("        댄스 : " + get댄스());
-        System.out.println("        매력 : " + get매력());
-        System.out.println("        등급 : " + get등급());
+        System.out.println("        Name : " + getName());
+        System.out.println("        health : " + getHealth());
+        System.out.println("        vocal : " + getVocal());
+        System.out.println("        rap : " + getRap());
+        System.out.println("        dance : " + getDance());
+        System.out.println("        charm : " + getCharm());
+        System.out.println("        grade : " + getGrade());
         System.out.println("        소지금 : " + get소지금());
-        System.out.println("        득표수 : " + get득표수());
+        System.out.println("        voteCount : " + getVoteCount());
         System.out.println("--------------------------");
     }
 
@@ -49,7 +49,7 @@ public class 개인연습생 extends 연습생 {
         System.out.println("----------------------------------------");
         System.out.println("현재 보유한 의상 확인");
         for(int i = 0; i < 옷장.size(); i++){
-            System.out.println(i + " : " + 옷장.get(i).get물품명());
+            System.out.println(i + " : " + 옷장.get(i).getItemName());
         }
         System.out.println("----------------------------------------");
     }
@@ -62,7 +62,7 @@ public class 개인연습생 extends 연습생 {
 
         System.out.println("현재 보유한 신발 확인");
         for(int i = 0; i < 신발장.size(); i++ ){
-            System.out.println(i + " : " + 신발장.get(i).get물품명());
+            System.out.println(i + " : " + 신발장.get(i).getItemName());
         }
         System.out.println("----------------------------------------");
     }
@@ -76,9 +76,9 @@ public class 개인연습생 extends 연습생 {
             final 의상 착용의상 = 옷장.get(value);
 
             set의상(착용의상);
-            add매력(착용의상.get매력());
+            addCharm(착용의상.getCharm());
             옷장.remove(value);
-            System.out.println("        의상 : " + 의상.get물품명());
+            System.out.println("        의상 : " + 의상.getItemName());
             System.out.println("        의상 착용이 완료되었습니다.");
             능력치보여주기();
         }
@@ -93,9 +93,9 @@ public class 개인연습생 extends 연습생 {
             final 신발 착용신발 = 신발장.get(value);
 
             set신발(착용신발);
-            add댄스(착용신발.get댄스());
+            addDance(착용신발.getDance());
             신발장.remove(value);
-            System.out.println("        신발 : " + 신발.get물품명());
+            System.out.println("        신발 : " + 신발.getItemName());
             System.out.println("        신발 착용이 완료되었습니다.");
             능력치보여주기();
         }
@@ -103,14 +103,14 @@ public class 개인연습생 extends 연습생 {
 
     public void 의상벗기(){
         옷장.add(의상);
-        set매력(get매력() - 의상.get매력());
+        setCharm(getCharm() - 의상.getCharm());
         set의상(null);
         System.out.println("의상을 벗었습니다.");
     }
 
     public void 신발벗기() {
         신발장.add(신발);
-        set댄스(get댄스() - 신발.get댄스());
+        setDance(getDance() - 신발.getDance());
         set신발(null);
         System.out.println("신발을 벗었습니다.");
     }
@@ -126,31 +126,31 @@ public class 개인연습생 extends 연습생 {
         if (value == 1 && !목캔디.isEmpty()) {
             final 음식물 아이템 = 목캔디.get(0);
 
-            add보컬(아이템.get보컬());
-            add랩(아이템.get랩());
-            System.out.println(아이템.get물품명() + "를 섭취했습니다.");
-            System.out.println("보컬 수치가 " + 아이템.get보컬() + "만큼 증가했습니다.");
-            System.out.println("랩 수치가 " + 아이템.get랩() + "만큼 증가했습니다.");
+            addVocal(아이템.getVocal());
+            addRap(아이템.getRap());
+            System.out.println(아이템.getItemName() + "를 섭취했습니다.");
+            System.out.println("vocal 수치가 " + 아이템.getVocal() + "만큼 증가했습니다.");
+            System.out.println("rap 수치가 " + 아이템.getRap() + "만큼 증가했습니다.");
             목캔디.remove(0);
             능력치보여주기();
         } else if (value == 2 && !샐러드.isEmpty()) {
             final 음식물 아이템 = 샐러드.get(0);
 
-            add체력(아이템.get체력());
-            add매력(아이템.get매력());
-            System.out.println(아이템.get물품명() + "를 섭취했습니다.");
-            System.out.println("체력 수치가 " + 아이템.get체력() + "만큼 증가했습니다.");
-            System.out.println("매력 수치가 " + 아이템.get매력() + "만큼 증가했습니다.");
+            addHealth(아이템.getHealth());
+            addCharm(아이템.getCharm());
+            System.out.println(아이템.getItemName() + "를 섭취했습니다.");
+            System.out.println("health 수치가 " + 아이템.getHealth() + "만큼 증가했습니다.");
+            System.out.println("charm 수치가 " + 아이템.getCharm() + "만큼 증가했습니다.");
             샐러드.remove(0);
             능력치보여주기();
         } else if (value == 3 && !케이크.isEmpty()) {
             final 음식물 아이템 = 케이크.get(0);
 
-            add체력(아이템.get체력());
-            set매력(get매력() - 아이템.get매력());
-            System.out.println(아이템.get물품명() + "를 섭취했습니다.");
-            System.out.println("체력 수치가 " + 아이템.get체력() + "만큼 증가했습니다.");
-            System.out.println("매력 수치가 -" + 아이템.get매력() + "만큼 감소했습니다.");
+            addHealth(아이템.getHealth());
+            setCharm(getCharm() - 아이템.getCharm());
+            System.out.println(아이템.getItemName() + "를 섭취했습니다.");
+            System.out.println("health 수치가 " + 아이템.getHealth() + "만큼 증가했습니다.");
+            System.out.println("charm 수치가 -" + 아이템.getCharm() + "만큼 감소했습니다.");
             케이크.remove(0);
             능력치보여주기();
         } else if (value >= 1 && value <= 3) {

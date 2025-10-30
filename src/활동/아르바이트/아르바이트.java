@@ -9,11 +9,11 @@ import 캐릭터.개인연습생;
 // 도대체 뭐를 객체화 하고 싶은건가?를 생각해야 한다.
 
 public abstract class 아르바이트 {
-    private final int 체력;
+    private final int health;
     private final int 일당;
 
-    public 아르바이트(int 체력, int 일당) {
-        this.체력 = 체력;
+    public 아르바이트(int health, int 일당) {
+        this.health = health;
         this.일당 = 일당;
     }
 
@@ -22,8 +22,8 @@ public abstract class 아르바이트 {
 
     public abstract void 능력치습득(개인연습생 플레이어);
 
-    protected int get체력() {
-        return 체력;
+    protected int getHealth() {
+        return health;
     }
 
     protected int get일당() {

@@ -18,12 +18,12 @@ public class 의상실 {
     public void 의상실아이템보기() {
         System.out.println("구매하실 물품의 번호를 입력해 주세요.");
         System.out.println("-----------------------------------------------");
-        System.out.println("1. " + 트레이닝복.get물품명() + " : 매력 " + 트레이닝복.get매력() + " / 가격 " + 트레이닝복.get가격() + "원");
-        System.out.println("2. " + 테크웨어.get물품명() + " : 매력 " + 테크웨어.get매력() + " / 가격 " + 테크웨어.get가격() + "원");
-        System.out.println("3. " + 수트.get물품명() + " : 매력 " + 수트.get매력() + " / 가격 " + 수트.get가격() + "원");
-        System.out.println("4. " + 운동화.get물품명() + " : 댄스 " + 운동화.get댄스() + " / 가격 " + 운동화.get가격() + "원");
-        System.out.println("5. " + 부츠.get물품명() + " : 댄스 " + 부츠.get댄스() + " / 가격 " + 부츠.get가격() + "원");
-        System.out.println("6. " + 구두.get물품명() + " : 댄스 " + 구두.get댄스() + " / 가격 " + 구두.get가격() + "원");
+        System.out.println("1. " + 트레이닝복.getItemName() + " : charm " + 트레이닝복.getCharm() + " / price " + 트레이닝복.getPrice() + "원");
+        System.out.println("2. " + 테크웨어.getItemName() + " : charm " + 테크웨어.getCharm() + " / price " + 테크웨어.getPrice() + "원");
+        System.out.println("3. " + 수트.getItemName() + " : charm " + 수트.getCharm() + " / price " + 수트.getPrice() + "원");
+        System.out.println("4. " + 운동화.getItemName() + " : dance " + 운동화.getDance() + " / price " + 운동화.getPrice() + "원");
+        System.out.println("5. " + 부츠.getItemName() + " : dance " + 부츠.getDance() + " / price " + 부츠.getPrice() + "원");
+        System.out.println("6. " + 구두.getItemName() + " : dance " + 구두.getDance() + " / price " + 구두.getPrice() + "원");
         System.out.println("-----------------------------------------------");
     }
 
@@ -53,8 +53,8 @@ public class 의상실 {
         }
 
         final 의상 의상 = 플레이어.get옷장().get(value);
-        플레이어.add소지금(의상.get가격());
-        System.out.println(의상.get물품명() + " 판매가 완료되었습니다.");
+        플레이어.add소지금(의상.getPrice());
+        System.out.println(의상.getItemName() + " 판매가 완료되었습니다.");
         플레이어.get옷장().remove(value);
         System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
     }
@@ -66,8 +66,8 @@ public class 의상실 {
         }
 
         final 신발 신발 = 플레이어.get신발장().get(value);
-        플레이어.add소지금(신발.get가격());
-        System.out.println(신발.get물품명() + " 판매가 완료되었습니다.");
+        플레이어.add소지금(신발.getPrice());
+        System.out.println(신발.getItemName() + " 판매가 완료되었습니다.");
         플레이어.get신발장().remove(value);
         System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
     }
@@ -75,27 +75,27 @@ public class 의상실 {
     private void 장비아이템사기(개인연습생 플레이어, 장비 장비) {
         if ((장비 instanceof 의상 && 플레이어.get옷장().contains(장비)) ||
                 (장비 instanceof 신발 && 플레이어.get신발장().contains(장비))) {
-            System.out.println(장비.get물품명() + "은 이미 소유하고 있습니다. 구매가 불가능합니다.");
+            System.out.println(장비.getItemName() + "은 이미 소유하고 있습니다. 구매가 불가능합니다.");
             return;
         }
 
-        if (플레이어.get소지금() < 장비.get가격()) {
+        if (플레이어.get소지금() < 장비.getPrice()) {
             System.out.println("소지금 부족으로 구매가 불가능합니다.");
             return;
         }
 
         if (장비 instanceof 의상) { // 의상인 경우
-            플레이어.set소지금(플레이어.get소지금() - 장비.get가격());
+            플레이어.set소지금(플레이어.get소지금() - 장비.getPrice());
             // 플레이어 앞에서 연습생이라고 해서 가져와서 오류가 나게 됨. 상위클래스가 아닌 하위클래스를 가져와야 함.
             플레이어.get옷장().add((의상)장비);
-            System.out.println(장비.get물품명() + " 구매가 완료되었습니다.");
+            System.out.println(장비.getItemName() + " 구매가 완료되었습니다.");
             System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
             플레이어.의상보여주기();
 
         } else if (장비 instanceof 신발) { // 신발인 경우
-            플레이어.set소지금(플레이어.get소지금() - 장비.get가격());
+            플레이어.set소지금(플레이어.get소지금() - 장비.getPrice());
             플레이어.get신발장().add((신발)장비);
-            System.out.println(장비.get물품명() + " 구매가 완료되었습니다.");
+            System.out.println(장비.getItemName() + " 구매가 완료되었습니다.");
             System.out.println("현재 소지금이 " + 플레이어.get소지금() + "원 남았습니다.");
             플레이어.신발보여주기();
         }

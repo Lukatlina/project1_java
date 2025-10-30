@@ -1,33 +1,33 @@
 package 아이템;
 
 public class 소비품 extends 아이템{
-    private final int 보컬;
-    private final int 랩;
-    private final int 체력;
-    private final int 매력;
+    private final int vocal;
+    private final int rap;
+    private final int health;
+    private final int charm;
 
-    public 소비품(String 물품명, int 가격, int 체력, int 보컬, int 랩, int 매력) {
-        super(물품명, 가격);
-        this.체력 = 체력;
-        this.보컬 = 보컬;
-        this.랩 = 랩;
-        this.매력 = 매력;
+    public 소비품(String itemName, int price, int health, int vocal, int rap, int charm) {
+        super(itemName, price);
+        this.health = health;
+        this.vocal = vocal;
+        this.rap = rap;
+        this.charm = charm;
     }
 
-        public int get보컬(){
-            return 보컬;
+        public int getVocal(){
+            return vocal;
         }
 
-        public int get랩() {
-            return 랩;
+        public int getRap() {
+            return rap;
         }
 
-        public int get체력(){
-            return 체력;
+        public int getHealth(){
+            return health;
         }
 
-        public int get매력(){
-            return 매력;
+        public int getCharm(){
+            return charm;
         }
 
     }

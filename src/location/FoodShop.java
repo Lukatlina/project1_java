@@ -33,11 +33,11 @@ public class FoodShop {
     }
 
     public void sellItem(int value, IndividualTrainee player) {
-        if (value == 1 && player.getThroatCandies().isEmpty() == false) {
+        if (value == 1 && !player.getThroatCandies().isEmpty()) {
             processSale(player, player.getThroatCandies());
-        } else if (value == 2 && player.getSalads().isEmpty() == false) {
+        } else if (value == 2 && !player.getSalads().isEmpty()) {
             processSale(player, player.getSalads());
-        } else if (value == 3 && player.getCakes().isEmpty() == false) {
+        } else if (value == 3 && !player.getCakes().isEmpty()) {
             processSale(player, player.getCakes());
         }else{
             System.out.println("판매할 아이템이 없습니다.");
@@ -45,9 +45,9 @@ public class FoodShop {
     }
 
     private void processSale(IndividualTrainee player, List<Food> Food) {
-        if (Food.isEmpty() == false) {
-            player.addMoney(Food.get(0).getPrice());
-            Food.remove(0);
+        if (!Food.isEmpty()) {
+            player.addMoney(Food.getFirst().getPrice());
+            Food.removeFirst();
             System.out.println("현재 소지금이 " + player.getMoney() + "원 남았습니다.");
             player.showConsumableStock();
         } else {

@@ -33,6 +33,7 @@ public class Stage {
         }
         System.out.println("토요일에 할 자유행동을 선택해주세요.");
         freeActivity.performFreeActivity(player);
+        checkPlayerElimination(player);
         player.showStats();
     }
 
@@ -44,8 +45,7 @@ public class Stage {
         System.out.println("국민 프로듀서분들께 어필할 행동을 선택해주세요.");
 
         player.setVoteCount(0);
-        boolean isPerforming = true;
-        while (isPerforming) {
+        while (true) {
             System.out.println("1. 공연하기 2. 개인기 선보이기");
             int value = sc.nextInt();
             if (value == 1) {
@@ -66,7 +66,6 @@ public class Stage {
                 } else if (player.getVoteCount() < targetVoteCount && rival.getVoteCount() >= targetVoteCount) {
                     System.out.println("아쉽게도 다른 연습생이 먼저 " + targetVoteCount + "표를 달성하여 플레이어가 탈락했습니다.");
                     System.exit(0);
-                    isPerforming = false;
                 } else if (player.getVoteCount() >= targetVoteCount && rival.getVoteCount() >= targetVoteCount) {
                     if (player.getVoteCount() >= rival.getVoteCount()) {
                         player.promoteGrade();
@@ -169,9 +168,18 @@ public class Stage {
     private void runDailyRoutine(IndividualTrainee player) {
         System.out.println("오전에 할 일을 선택해 주세요");
         runActivityChoice(player);
+        checkPlayerElimination(player);
         System.out.println("오후에 할 일을 선택해 주세요.");
         runActivityChoice(player);
+        checkPlayerElimination(player);
         System.out.println("하루가 지났습니다.");
         player.showStats();
+    }
+
+    private void checkPlayerElimination(IndividualTrainee player) {
+        if (player.isEliminated()) {
+            System.out.println("체력이 고갈되어 더 이상 진행할 수 없습니다. 자진하차를 선택했습니다.");
+            System.exit(0);
+        }
     }
 }

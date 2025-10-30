@@ -199,13 +199,13 @@ public class Main {
                             System.out.println("1. 의상판매 2. 신발판매");
                             value = sc.nextInt();
 
-                            if (value == 1 && player.getWardrobe().isEmpty() == false) {
+                            if (value == 1 && !player.getWardrobe().isEmpty()) {
                                 player.showWardrobe();
                                 System.out.println("판매하실 아이템의 번호를 입력해주세요.");
                                 value = sc.nextInt();
                                 costumeShop.sellCostume(value, player);
 
-                            } else if (value == 2 && player.getShoeRack().isEmpty() == false) {
+                            } else if (value == 2 && !player.getShoeRack().isEmpty()) {
                                 player.showShoeRack();
                                 System.out.println("판매하실 아이템의 번호를 입력해주세요.");
                                 value = sc.nextInt();

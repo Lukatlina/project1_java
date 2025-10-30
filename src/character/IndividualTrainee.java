@@ -11,11 +11,11 @@ public class IndividualTrainee extends Trainee {
     private int money;
     private Costume costume;
     private Shoes shoes;
-    private final List<Costume> wardrobe = new ArrayList<Costume>();
-    private final List<Shoes> shoeRack = new ArrayList<Shoes>();
-    private final List<Food> throatCandies = new ArrayList<Food>();
-    private final List<Food> salads = new ArrayList<Food>();
-    private final List<Food> cakes = new ArrayList<Food>();
+    private final List<Costume> wardrobe = new ArrayList<>();
+    private final List<Shoes> shoeRack = new ArrayList<>();
+    private final List<Food> throatCandies = new ArrayList<>();
+    private final List<Food> salads = new ArrayList<>();
+    private final List<Food> cakes = new ArrayList<>();
 
     public IndividualTrainee(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount, int money) {
         super(Name, vocal, rap, charm, dance, grade, voteCount);
@@ -120,34 +120,34 @@ public class IndividualTrainee extends Trainee {
 
     public void consumeItem(int value){
         if (value == 1 && !throatCandies.isEmpty()) {
-            final Food item = throatCandies.get(0);
+            final Food item = throatCandies.getFirst();
 
             addVocal(item.getVocal());
             addRap(item.getRap());
             System.out.println(item.getItemName() + "를 섭취했습니다.");
             System.out.println("보컬 수치가 " + item.getVocal() + "만큼 증가했습니다.");
             System.out.println("랩 수치가 " + item.getRap() + "만큼 증가했습니다.");
-            throatCandies.remove(0);
+            throatCandies.removeFirst();
             showStats();
         } else if (value == 2 && !salads.isEmpty()) {
-            final Food item = salads.get(0);
+            final Food item = salads.getFirst();
 
             addHealth(item.getHealth());
             addCharm(item.getCharm());
             System.out.println(item.getItemName() + "를 섭취했습니다.");
             System.out.println("체력 수치가 " + item.getHealth() + "만큼 증가했습니다.");
             System.out.println("매력 수치가 " + item.getCharm() + "만큼 증가했습니다.");
-            salads.remove(0);
+            salads.removeFirst();
             showStats();
         } else if (value == 3 && !cakes.isEmpty()) {
-            final Food item = cakes.get(0);
+            final Food item = cakes.getFirst();
 
             addHealth(item.getHealth());
             setCharm(getCharm() - item.getCharm());
             System.out.println(item.getItemName() + "를 섭취했습니다.");
             System.out.println("체력 수치가 " + item.getHealth() + "만큼 증가했습니다.");
             System.out.println("매력 수치가 -" + item.getCharm() + "만큼 감소했습니다.");
-            cakes.remove(0);
+            cakes.removeFirst();
             showStats();
         } else if (value >= 1 && value <= 3) {
             System.out.println("음식이 없습니다. 아이템을 구매해주세요.");
@@ -162,20 +162,12 @@ public class IndividualTrainee extends Trainee {
     }
 
     public void setMoney(int money) {
-        if (money < 0) {
-            this.money = 0;
-        } else {
-            this.money = money;
-        }
+        this.money = Math.max(money, 0);
     }
 
     public void addMoney(int money) {
         int newMoney = this.money + money;
-        if (newMoney < 0) {
-            this.money = 0;
-        } else {
-            this.money = newMoney;
-        }
+        this.money = Math.max(newMoney, 0);
     }
 
     public List<Costume> getWardrobe() {

@@ -4,7 +4,7 @@ import java.util.Random;
 
 
 public abstract class Trainee {
-    private final String Name;
+    private final String name;
     private int health = 100;
     private int vocal;
     private int rap;
@@ -15,8 +15,8 @@ public abstract class Trainee {
     private final Random random = new Random();
 
     // 생성자
-    public Trainee(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount) {
-        this.Name = Name;
+    public Trainee(String name, int vocal, int rap, int charm, int dance, String grade, int voteCount) {
+        this.name = name;
         this.vocal = vocal;
         this.rap = rap;
         this.charm = charm;
@@ -26,33 +26,21 @@ public abstract class Trainee {
     }
 
     // 변수 접근자를 private로 만들었기 때문에 자식클래스가 상속해서 사용하기 위해서는 getter/setter를 사용해야 한다.
-    public int perform() {
+    public void perform() {
         // random으로 Good / SoSo / Bad 선택
         // random으로 상, 중, 하로 점수를 주도록 만듦.
         int outcome = random.nextInt(3);
-        int voteCount = 0;
-        if (vocal > getRap()) {
-            System.out.println(voteCount);
-            if (outcome == 0) {
-                voteCount = (int) ((vocal * getDance() * getCharm() * 1.2));
-            } else if (outcome == 1) {
-                voteCount = vocal * getDance() * getCharm();
-            } else {
-                voteCount = (int) ((vocal * getDance() * getCharm() * 0.8));
-            }
-            addVoteCount(voteCount);
+        int baseStat = Math.max(vocal, rap);
+        double modifier;
+        if (outcome == 0) {
+            modifier = 1.2;
+        } else if (outcome == 1) {
+            modifier = 1.0;
         } else {
-            System.out.println(voteCount);
-            if (outcome == 0) {
-                voteCount = (int) ((getRap() * getDance() * getCharm() * 1.2));
-            } else if (outcome == 1) {
-                voteCount = getRap() * getDance() * getCharm();
-            } else {
-                voteCount = (int) ((getRap() * getDance() * getCharm() * 0.8));
-            }
-            addVoteCount(voteCount);
+            modifier = 0.8;
         }
-        return voteCount;
+        int calculatedVotes = (int) (baseStat * getDance() * getCharm() * modifier);
+        addVoteCount(calculatedVotes);
     }
 
     public void showSpecialSkill(int value) {
@@ -75,23 +63,31 @@ public abstract class Trainee {
     }
 
     public void promoteGrade() {
-        if (getGrade().equals("F")) {
-            grade="D";
-            System.out.println("F등급에서 D등급으로 상승했습니다.");
-        } else if (getGrade().equals("D")) {
-            grade="C";
-            System.out.println("D등급에서 C등급으로 상승했습니다.");
-        } else if (getGrade().equals("C")) {
-            grade="B";
-            System.out.println("C등급에서 B등급으로 상승했습니다.");
-        } else {
-            grade="A";
-            System.out.println("B등급에서 A등급으로 상승했습니다.");
+        switch (getGrade()) {
+            case "F":
+                grade="D";
+                System.out.println("F등급에서 D등급으로 상승했습니다.");
+                break;
+
+            case "D":
+                grade="C";
+                System.out.println("D등급에서 C등급으로 상승했습니다.");
+                break;
+
+            case "C":
+                grade="B";
+                System.out.println("C등급에서 B등급으로 상승했습니다.");
+                break;
+
+            case "B":
+                grade="A";
+                System.out.println("B등급에서 A등급으로 상승했습니다.");
+                break;
         }
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public int getHealth() {
@@ -102,21 +98,13 @@ public abstract class Trainee {
         if (health <= 0) {
             // health이 0보다 작으면 0으로 설정
             this.health = 0;
-            System.out.println("체력이 고갈되어 더 이상 진행할 수 없습니다. 자진하차를 선택했습니다.");
-            // 프로그램 종료
-            System.exit(0);
-
-        } else if (health > 100) {
-            // health이 100보다 클 수 없도록 이상이여도 100으로 설정
-            this.health = 100;
-
         } else {
-            this.health = health;
+            this.health = Math.min(health, 100);
         }
     }
 
-    public void addHealth(int health) {
-        this.health += health;
+    public void addHealth(int amount) {
+        setHealth(this.health + amount);
     }
 
     public int getVocal() {
@@ -129,11 +117,8 @@ public abstract class Trainee {
         if (newVocal < 0) {
             this.vocal = 0;
 
-        } else if (newVocal > 100) {
-            this.vocal = 100;
-
         } else {
-            this.vocal = newVocal;
+            this.vocal = Math.min(newVocal, 100);
         }
     }
 
@@ -147,11 +132,8 @@ public abstract class Trainee {
         if (newRap < 0) {
             this.rap = 0;
 
-        } else if (newRap > 100) {
-            this.rap = 100;
-
         } else {
-            this.rap = newRap;
+            this.rap = Math.min(newRap, 100);
         }
     }
 
@@ -162,10 +144,8 @@ public abstract class Trainee {
     public void setCharm(int charm) {
         if (charm < 0) {
             this.charm = 0;
-        } else if (charm > 100) {
-            this.charm = 100;
         } else {
-            this.charm = charm;
+            this.charm = Math.min(charm, 100);
         }
     }
 
@@ -175,11 +155,8 @@ public abstract class Trainee {
         if (newCharm < 0) {
             this.charm = 0;
 
-        } else if (newCharm > 100) {
-            this.charm = 100;
-
         } else {
-            this.charm = newCharm;
+            this.charm = Math.min(newCharm, 100);
         }
     }
 
@@ -190,10 +167,8 @@ public abstract class Trainee {
     public void setDance(int dance) {
         if (dance < 0) {
             this.dance = 0;
-        } else if (dance > 100) {
-            this.dance = 100;
         } else {
-            this.dance = dance;
+            this.dance = Math.min(dance, 100);
         }
     }
 
@@ -203,11 +178,8 @@ public abstract class Trainee {
         if (newDance < 0) {
             this.dance = 0;
 
-        } else if (newDance > 100) {
-            this.dance = 100;
-
         } else {
-            this.dance = newDance;
+            this.dance = Math.min(newDance, 100);
         }
     }
 
@@ -220,11 +192,7 @@ public abstract class Trainee {
     }
 
     public void setVoteCount(int voteCount) {
-        if (voteCount < 0) {
-            this.voteCount = 0;
-        } else {
-            this.voteCount = voteCount;
-        }
+        this.voteCount = Math.max(voteCount, 0);
     }
 
     private void performCryingAct() {
@@ -267,12 +235,10 @@ public abstract class Trainee {
     
     private void addVoteCount(int voteCount) {
         int newVoteCount = this.voteCount + voteCount;
+        this.voteCount = Math.max(newVoteCount, 0);
+    }
 
-        if (newVoteCount < 0) {
-            this.voteCount = 0;
-
-        } else {
-            this.voteCount = newVoteCount;
-        }
+    public boolean isEliminated() {
+        return this.health <= 0;
     }
 }

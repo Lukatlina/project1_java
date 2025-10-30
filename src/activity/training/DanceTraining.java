@@ -1,12 +1,12 @@
-package 활동.트레이닝;
+package activity.training;
 
-import 캐릭터.개인연습생;
+import character.IndividualTrainee;
 import java.util.Random;
 
-public class dance트레이닝 extends 트레이닝 {
+public class DanceTraining extends Training {
     private final int dance;
 
-    public dance트레이닝(int health, int dance) {
+    public DanceTraining(int health, int dance) {
         super(health);
         this.dance = dance;
     }
@@ -17,7 +17,7 @@ public class dance트레이닝 extends 트레이닝 {
     // 내가 그렇게 만들어 놓으면 다른 개발자가 할 일이 없어지기 때문에 그게 중요하다. 위치에 따라 다른 개발자들이 신경을 덜 쓰게 된다.
     // 대부분의 작업이 코드 양이 줄어드는 것 보다 위치만 바뀐다. 이게 나중에 다시 사용될 것을 생각해보자. 결과가 많이 달라진다.
     @Override
-    public void 능력치습득(개인연습생 플레이어){
+    public void 능력치습득(IndividualTrainee 플레이어){
         Random random = new Random();
         int random값 = random.nextInt(3);
         if (random값 == 0){

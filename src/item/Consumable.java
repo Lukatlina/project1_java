@@ -1,12 +1,12 @@
-package 아이템;
+package item;
 
-public class 소비품 extends 아이템{
+public class Consumable extends Item {
     private final int vocal;
     private final int rap;
     private final int health;
     private final int charm;
 
-    public 소비품(String itemName, int price, int health, int vocal, int rap, int charm) {
+    public Consumable(String itemName, int price, int health, int vocal, int rap, int charm) {
         super(itemName, price);
         this.health = health;
         this.vocal = vocal;

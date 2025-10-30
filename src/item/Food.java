@@ -1,6 +1,6 @@
-package 아이템;
+package item;
 
-public class 음식물 extends 소비품 {
+public class Food extends Consumable {
 
     // 소비품 아래에 캔디나 다른 클래스 만들기 -> 일관성이 없음, 장비도 소비품처럼 했다면 문제는 안됐을 것
 
@@ -10,7 +10,7 @@ public class 음식물 extends 소비품 {
     // 변수명도 각 클래스에 맞춰서 선언
 
     // 목캔디 생성자
-    public 음식물(String itemName, int price, int health, int vocal, int rap, int charm) {
+    public Food(String itemName, int price, int health, int vocal, int rap, int charm) {
         super(itemName, price, health, vocal, rap, charm);
     }
 }

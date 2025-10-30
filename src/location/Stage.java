@@ -1,32 +1,32 @@
-package 장소;
+package location;
 
-import 활동.자유행동;
-import 활동.트레이닝.*;
-import 활동.아르바이트.*;
+import activity.FreeActivity;
+import activity.training.*;
+import activity.job.*;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import 캐릭터.*;
+import character.*;
 
-public class 스테이지 {
+public class Stage {
 
-    private final 트레이닝 vocal트레이닝 = new vocal트레이닝(1, 3);
-    private final 트레이닝 rap트레이닝 = new rap트레이닝(1, 3);
-    private final 트레이닝 dance트레이닝 = new dance트레이닝(1, 3);
-    private final 트레이닝 표정연구하기 = new 표정연구하기(1, 3);
+    private final Training 보컬트레이닝 = new VocalTraining(1, 3);
+    private final Training 랩트레이닝 = new RapTraining(1, 3);
+    private final Training 댄스트레이닝 = new DanceTraining(1, 3);
+    private final Training 표정연구하기 = new CharmTraining(1, 3);
 
-    private final 아르바이트 카페아르바이트 = new 카페아르바이트(5, 28000, 1, 1);
-    private final 아르바이트 인형탈아르바이트 = new 인형탈아르바이트(5, 38000, 1);
-    private final 아르바이트 프로모터아르바이트 = new 프로모터아르바이트(5, 48000, 1);
+    private final Job 카페아르바이트 = new CafeJob(5, 28000, 1, 1);
+    private final Job 인형탈아르바이트 = new MascotJob(5, 38000, 1);
+    private final Job 프로모터아르바이트 = new PromoterJob(5, 48000, 1);
 
-    private final 자유행동 자유행동 = new 자유행동(30000, 10, 5);
+    private final FreeActivity 자유행동 = new FreeActivity(30000, 10, 5);
 
     private final Scanner sc = new Scanner(System.in);
     private final Random random = new Random();
 
 
-    public void 일주일루틴(개인연습생 플레이어) {
+    public void 일주일루틴(IndividualTrainee 플레이어) {
         System.out.println("한 주가 시작됩니다.");
         for (int i = 0; i < 5; i++) {
             하루루틴(플레이어);
@@ -36,7 +36,7 @@ public class 스테이지 {
         플레이어.능력치보여주기();
     }
 
-    public void 일요일반복(개인연습생 플레이어, 라이벌 라이벌, int 달성voteCount) {
+    public void 일요일반복(IndividualTrainee 플레이어, Rival 라이벌, int 달성voteCount) {
 
         라이벌.능력치보여주기();
 
@@ -112,7 +112,7 @@ public class 스테이지 {
         }
     }
 
-    private void 아르바이트선택(개인연습생 플레이어) {
+    private void 아르바이트선택(IndividualTrainee 플레이어) {
         System.out.println("1. 카페아르바이트 2. 인형탈아르바이트 3. 프로모터아르바이트 4. 뒤로가기");
         int value = sc.nextInt();
         if (value == 1) {
@@ -126,15 +126,15 @@ public class 스테이지 {
         }
     }
 
-    private void 트레이닝선택(개인연습생 플레이어) {
+    private void 트레이닝선택(IndividualTrainee 플레이어) {
         System.out.println("1. vocal 2. rap 3. dance 4. 표정연구 5. 뒤로가기");
         int value = sc.nextInt();
         if (value == 1) {
-            vocal트레이닝.능력치습득(플레이어);
+            보컬트레이닝.능력치습득(플레이어);
         } else if (value == 2) {
-            rap트레이닝.능력치습득(플레이어);
+            랩트레이닝.능력치습득(플레이어);
         } else if (value == 3) {
-            dance트레이닝.능력치습득(플레이어);
+            댄스트레이닝.능력치습득(플레이어);
         } else if (value == 4) {
             표정연구하기.능력치습득(플레이어);
         } else {
@@ -142,7 +142,7 @@ public class 스테이지 {
         }
     }
 
-    private void 하루선택지(개인연습생 플레이어) {
+    private void 하루선택지(IndividualTrainee 플레이어) {
 
         System.out.println("1. 트레이닝 2. 아르바이트. 3. 아무 것도 하지 않기");
         int value = sc.nextInt();
@@ -166,7 +166,7 @@ public class 스테이지 {
         }
     }
 
-    private void 하루루틴(개인연습생 플레이어) {
+    private void 하루루틴(IndividualTrainee 플레이어) {
         System.out.println("오전에 할 일을 선택해 주세요");
         하루선택지(플레이어);
         System.out.println("오후에 할 일을 선택해 주세요.");

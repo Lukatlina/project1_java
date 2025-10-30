@@ -1,8 +1,8 @@
-import 장소.상점;
-import 장소.스테이지;
-import 장소.의상실;
-import 캐릭터.개인연습생;
-import 캐릭터.라이벌;
+import location.FoodShop;
+import location.Stage;
+import location.CostumeShop;
+import character.IndividualTrainee;
+import character.Rival;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -50,13 +50,13 @@ public class Main {
             sc.nextLine();
             System.out.print("Name을 입력해주세요: ");
             final String Name = sc.nextLine();
-            final 의상실 의상실 = new 의상실();
-            final 상점 상점 = new 상점();
-            final 스테이지 스테이지 = new 스테이지();
+            final CostumeShop 의상실 = new CostumeShop();
+            final FoodShop 상점 = new FoodShop();
+            final Stage 스테이지 = new Stage();
 
 
             // 플레이어 생성
-            final 개인연습생 player = new 개인연습생(
+            final IndividualTrainee player = new IndividualTrainee(
                     Name,
                     random.nextInt(21) + 10,
                     random.nextInt(21) + 10,
@@ -85,19 +85,19 @@ public class Main {
 
                     if (player.getGrade().equals("F") && value == 1) {
                         스테이지.일주일루틴(player);
-                        final 라이벌 Dgrade라이벌 = new 라이벌("라이관린", 30, 30, 50, 30, "D", 0);
+                        final Rival Dgrade라이벌 = new Rival("라이관린", 30, 30, 50, 30, "D", 0);
                         스테이지.일요일반복(player, Dgrade라이벌, F_GOAL);
                     } else if (player.getGrade().equals("D") && value == 2) {
                         스테이지.일주일루틴(player);
-                        final 라이벌 Cgrade라이벌 = new 라이벌("김재환", 70, 50, 50, 50, "C", 0);
+                        final Rival Cgrade라이벌 = new Rival("김재환", 70, 50, 50, 50, "C", 0);
                         스테이지.일요일반복(player, Cgrade라이벌, D_GOAL);
                     } else if (player.getGrade().equals("C") && value == 3) {
                         스테이지.일주일루틴(player);
-                        final 라이벌 Bgrade라이벌 = new 라이벌("강다니엘", 60, 70, 70, 80, "B", 0);
+                        final Rival Bgrade라이벌 = new Rival("강다니엘", 60, 70, 70, 80, "B", 0);
                         스테이지.일요일반복(player, Bgrade라이벌, C_GOAL);
                     } else if (player.getGrade().equals("B") && value == 4) {
                         스테이지.일주일루틴(player);
-                        final 라이벌 Agrade라이벌 = new 라이벌("박지훈", 90, 80, 100, 90,"A", 0);
+                        final Rival Agrade라이벌 = new Rival("박지훈", 90, 80, 100, 90,"A", 0);
                         스테이지.일요일반복(player, Agrade라이벌, B_GOAL);
                     }else {
                         System.out.println("입장 조건을 충족하지 못했습니다.");
@@ -154,7 +154,7 @@ public class Main {
 
 
                         } else if (value == 4) {
-                            if (player.get의상() != null) {
+                            if (player.getCostume() != null) {
                                 player.의상벗기();
                                 player.의상보여주기();
                             }else{
@@ -186,7 +186,7 @@ public class Main {
                         value = sc.nextInt();
 
                         if (value == 1) {
-                            System.out.println("현재 소지금이 " + player.get소지금() + "원 있습니다.");
+                            System.out.println("현재 money이 " + player.getMoney() + "원 있습니다.");
                             의상실.의상실아이템보기();
                             System.out.println("구매하실 아이템의 번호를 입력해주세요.");
                             value = sc.nextInt();
@@ -194,7 +194,7 @@ public class Main {
 
 
                         } else if (value == 2) {
-                            System.out.println("현재 소지금이 " + player.get소지금() + "원 있습니다.");
+                            System.out.println("현재 money이 " + player.getMoney() + "원 있습니다.");
                             System.out.println("다음 선택지를 선택해주세요.");
                             System.out.println("1. 의상판매 2. 신발판매");
                             value = sc.nextInt();
@@ -231,14 +231,14 @@ public class Main {
                         value = sc.nextInt();
 
                         if (value == 1){
-                            System.out.println("현재 소지금이 " + player.get소지금() + "원 있습니다.");
+                            System.out.println("현재 money이 " + player.getMoney() + "원 있습니다.");
                             상점.상점아이템보기();
                             System.out.println("구매하실 아이템의 번호를 입력해주세요.");
                             value = sc.nextInt();
                             상점.아이템구매하기(value, player);
 
                         } else if (value == 2) {
-                            System.out.println("현재 소지금이 " + player.get소지금() + "원 있습니다.");
+                            System.out.println("현재 money이 " + player.getMoney() + "원 있습니다.");
                             상점.상점아이템보기();
                             System.out.println("판매하실 아이템의 번호를 입력해주세요.");
                             value = sc.nextInt();

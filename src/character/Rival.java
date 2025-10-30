@@ -1,9 +1,9 @@
-package 캐릭터;
+package character;
 
-public class 라이벌 extends 연습생{
+public class Rival extends Trainee {
 
 
-    public 라이벌(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount) {
+    public Rival(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount) {
         super(Name, vocal, rap, charm, dance, grade, voteCount);
     }
 

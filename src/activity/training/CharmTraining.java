@@ -1,18 +1,18 @@
-package 활동.트레이닝;
+package activity.training;
 
-import 캐릭터.개인연습생;
+import character.IndividualTrainee;
 import java.util.Random;
 
-public class 표정연구하기 extends 트레이닝 {
+public class CharmTraining extends Training {
     private final int charm;
 
-    public 표정연구하기(int health, int charm) {
+    public CharmTraining(int health, int charm) {
         super(health);
         this.charm = charm;
     }
     
     @Override
-    public void 능력치습득(개인연습생 플레이어){
+    public void 능력치습득(IndividualTrainee 플레이어){
         Random random = new Random();
         int random값 = random.nextInt(3);
         if (random값 == 0){

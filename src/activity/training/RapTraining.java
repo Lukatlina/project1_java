@@ -1,18 +1,18 @@
-package 활동.트레이닝;
+package activity.training;
 
-import 캐릭터.개인연습생;
+import character.IndividualTrainee;
 import java.util.Random;
 
-public class rap트레이닝 extends 트레이닝 {
+public class RapTraining extends Training {
     private final int rap;
 
-    public rap트레이닝(int health, int rap) {
+    public RapTraining(int health, int rap) {
         super(health);
         this.rap = rap;
     }
 
     @Override
-    public void 능력치습득(개인연습생 플레이어){
+    public void 능력치습득(IndividualTrainee 플레이어){
         Random random = new Random();
         int random값 = random.nextInt(3);
         if (random값 == 0){

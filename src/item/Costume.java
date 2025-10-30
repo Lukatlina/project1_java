@@ -1,10 +1,10 @@
-package 아이템;
+package item;
 
-public class 의상 extends 장비 {
+public class Costume extends Equipment {
     private final int charm;
     // 생성자
 
-    public 의상(String itemName, int price, int charm) {
+    public Costume(String itemName, int price, int charm) {
         super(itemName, price);
         this.charm = charm;
     }

@@ -1,9 +1,9 @@
-package 캐릭터;
+package character;
 
 import java.util.Random;
 
 
-public abstract class 연습생 {
+public abstract class Trainee {
     private final String Name;
     private int health = 100;
     private int vocal;
@@ -15,7 +15,7 @@ public abstract class 연습생 {
     private final Random random = new Random();
 
     // 생성자
-    public 연습생(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount) {
+    public Trainee(String Name, int vocal, int rap, int charm, int dance, String grade, int voteCount) {
         this.Name = Name;
         this.vocal = vocal;
         this.rap = rap;

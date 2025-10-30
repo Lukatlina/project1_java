@@ -1,12 +1,12 @@
-package 활동.트레이닝;
+package activity.training;
 
-import 캐릭터.개인연습생;
+import character.IndividualTrainee;
 import java.util.Random;
 
-public class vocal트레이닝 extends 트레이닝 {
+public class VocalTraining extends Training {
     private final int vocal;
 
-    public vocal트레이닝(int health, int vocal) {
+    public VocalTraining(int health, int vocal) {
         super(health);
         this.vocal = vocal;
     }
@@ -19,7 +19,7 @@ public class vocal트레이닝 extends 트레이닝 {
 //    }
 
     @Override
-    public void 능력치습득(개인연습생 플레이어){
+    public void 능력치습득(IndividualTrainee 플레이어){
         Random random = new Random();
         int random값 = random.nextInt(3);
         if (random값 == 0){

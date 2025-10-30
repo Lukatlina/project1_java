@@ -1,11 +1,11 @@
-package 아이템;
+package item;
 
-public class 신발 extends 장비 {
+public class Shoes extends Equipment {
 
     private final int dance;
 
     // 생성자
-    public 신발(String itemName, int price, int dance) {
+    public Shoes(String itemName, int price, int dance) {
         super(itemName, price);
         this.dance = dance;
     }
